@@ -1,2 +1,22 @@
-<h1>Admin::PhoneNumbers#index</h1>
-<p>Find me in app/views/admin/phone_numbers/index.html.erb</p>
+<h4>番号一覧</h4>
+
+<%= form_with model: @phone_number, url: admin_phone_numbers_path do |f| %>
+  <div class="field">
+    <%= f.label "電話番号" %><br />
+    <%= f.text_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label "ステータス" %><br />
+    <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+<% end %>
+
+<% @phone_numbers.each do |phone_number| %>
+  <%= phone_number.telephone_number %>
+  <%= phone_number.sale_status_i18n %>
+<% end %>

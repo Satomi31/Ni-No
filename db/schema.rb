@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_10_07_124647) do
 
   create_table "phone_numbers", force: :cascade do |t|
     t.string "telephone_number", null: false
-    t.integer "sale_status", default: 0, null: false
+    t.integer "sale_status", null: false
     t.datetime "freeze_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

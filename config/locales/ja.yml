@@ -1,0 +1,7 @@
+ja:
+  enums:
+    phone_number:
+      sale_status:
+        no_contract: "未契約"
+        under_contract: "契約中"
+        number_freeze: "凍結中"

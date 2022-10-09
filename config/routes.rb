@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+
 # 管理者用
   namespace :admin do
-    root to: 'admin/phone_numbers#index'
-    resources :customers, only: [:index, :create, :show, :edit, :update]
-    resources :phone_numbers, only: [:index, :show, :edit, :update]
+    root to: 'phone_numbers#index'
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :phone_numbers, only: [:index, :create, :show, :edit, :update]
 
   end
 
@@ -12,9 +13,9 @@ Rails.application.routes.draw do
   get 'contracts/termination' => 'public/contracts#termination', as: 'termination'
   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
   scope module: :public do
-    root to: 'public/homes#top'
     resources :contracts, only: [:new, :create, :index, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :phone_numbers, only: [:index, :show]
   end
   get 'customers/my_page' => 'public/customers#show', as: 'my_page'
   get 'customers/information/edit' => 'public/customers#edit', as: 'edit_information'
@@ -23,8 +24,9 @@ Rails.application.routes.draw do
   get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
 
+  root to: 'public/homes#top'
 
-# 顧客用
+  # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -36,5 +38,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
