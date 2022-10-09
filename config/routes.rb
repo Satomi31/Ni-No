@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
+# 管理者用
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
+    root to: 'admin/phone_numbers#index'
+    resources :customers, only: [:index, :create, :show, :edit, :update]
+    resources :phone_numbers, only: [:index, :show, :edit, :update]
+
   end
-  namespace :admin do
-    get 'phone_numbers/index'
-    get 'phone_numbers/show'
-    get 'phone_numbers/edit'
+
+# 顧客用
+  get 'contracts/complete' => 'public/contracts#complete', as: 'complete'
+  get 'contracts/termination' => 'public/contracts#termination', as: 'termination'
+  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+  scope module: :public do
+    root to: 'public/homes#top'
+    resources :contracts, only: [:new, :create, :index, :update]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
   end
-  namespace :public do
-    get 'contracts/new'
-    get 'contracts/index'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-  end
+  get 'customers/my_page' => 'public/customers#show', as: 'my_page'
+  get 'customers/information/edit' => 'public/customers#edit', as: 'edit_information'
+  patch 'customers/information' => 'public/customers#update', as: 'information'
+  #退会機能
+  get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
+  patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
+
+
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
