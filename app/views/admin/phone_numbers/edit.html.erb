@@ -1,2 +1,19 @@
-<h1>Admin::PhoneNumbers#edit</h1>
-<p>Find me in app/views/admin/phone_numbers/edit.html.erb</p>
+<h4>番号詳細編集</h4>
+<%= form_with model:@phone_number, url: admin_phone_number_path(@phone_number) do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @phone_number.telephone_number %></td>
+      </tr>
+      <tr>
+        <td>販売ステータス</td>
+        <td>
+          <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]] %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.hidden_field :telephone_number, value: @phone_number.telephone_number %>
+  <%= f.submit '変更を保存' %>
+<% end %>

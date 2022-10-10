@@ -3,7 +3,7 @@ class Admin::PhoneNumbersController < ApplicationController
     @phone_number = PhoneNumber.new
     @phone_numbers = PhoneNumber.all
   end
-  
+
   def create
     phone_number = PhoneNumber.new(phone_number_params)
     phone_number.save
@@ -11,15 +11,23 @@ class Admin::PhoneNumbersController < ApplicationController
   end
 
   def show
+    @phone_number = PhoneNumber.find(params[:id])
   end
 
   def edit
+    @phone_number = PhoneNumber.find(params[:id])
   end
-  
+
+  def update
+    phone_number = PhoneNumber.find(params[:id])
+    phone_number.update(phone_number_params)
+    redirect_to admin_phone_number_path(phone_number)
+  end
+
   private
-  
+
   def phone_number_params
     params.require(:phone_number).permit(:telephone_number, :sale_status)
   end
-  
+
 end

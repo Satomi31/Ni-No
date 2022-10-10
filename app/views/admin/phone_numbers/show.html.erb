@@ -1,2 +1,16 @@
-<h1>Admin::PhoneNumbers#show</h1>
-<p>Find me in app/views/admin/phone_numbers/show.html.erb</p>
+<h4>電話番号詳細</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>電話番号</td>
+      <td><%= @phone_number.telephone_number %></td>
+    </tr>
+    <tr>
+      <td>販売ステータス</td>
+      <td><%= @phone_number.sale_status_i18n %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to '編集する', edit_admin_phone_number_path(@phone_number) %>
