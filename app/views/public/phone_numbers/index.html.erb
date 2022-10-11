@@ -1,1 +1,22 @@
-index
+<h4>番号一覧</h4>
+<table>
+  <thead>
+    <tr>
+      <th>電話番号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @phone_numbers.each do |phone_number| %>
+      <tr>
+        <td><%= phone_number.telephone_number %></td>
+        <td>
+          <%= form_with model: @cart_item do |f| %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.hidden_field :phone_number_id, value: phone_number.id %>
+            <%= f.submit "カートに入れる" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

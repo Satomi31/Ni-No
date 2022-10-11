@@ -16,9 +16,23 @@
   </div>
 <% end %>
 
-<% @phone_numbers.each do |phone_number| %>
-  <%= link_to admin_phone_number_path(phone_number) do %>
-    <%= phone_number.telephone_number %>
-  <% end %>
-  <%= phone_number.sale_status_i18n %>
-<% end %>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>電話番号</th>
+    <th>ステータス</th>
+  </thead>
+  <tbody>
+    <% @phone_numbers.each do |phone_number| %>
+      <tr>
+        <td><%= phone_number.id %></td>
+        <td>
+          <%= link_to admin_phone_number_path(phone_number) do %>
+            <%= phone_number.telephone_number %>
+          <% end %>
+        </td>
+        <td><%= phone_number.sale_status_i18n %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,2 +1,18 @@
-<h1>Public::Contracts#new</h1>
-<p>Find me in app/views/public/contracts/new.html.erb</p>
+<h4>注文情報確認画面</h4>
+<table>
+  <thead>
+    <th>電話番号</th>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.phone_number.telephone_number %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+合計:<%= @cart_items.count %>番号
+
+<%= form_with model: @contract do |f| %>
+  <%= f.submit '注文を確定する' %>
+<% end %>

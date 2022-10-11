@@ -1,2 +1,17 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<h4>注文内容確認</h4>
+<%= link_to 'カートを空にする', destroy_all_path, method: :delete %>
+<table>
+  <thead>
+    <th>電話番号</th>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.phone_number.telephone_number %></td>
+      <td><%= link_to '削除する', cart_item_path(cart_item), method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to '番号一覧に戻る', phone_numbers_path %>
+<%= link_to '注文情報確認に進む', new_contract_path %>
