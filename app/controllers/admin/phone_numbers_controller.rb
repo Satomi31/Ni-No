@@ -12,6 +12,7 @@ class Admin::PhoneNumbersController < ApplicationController
 
   def show
     @phone_number = PhoneNumber.find(params[:id])
+    @contracts = Contract.where(phone_number_id: @phone_number.id)
   end
 
   def edit
