@@ -1,2 +1,32 @@
-<h1>Public::Contracts#index</h1>
-<p>Find me in app/views/public/contracts/index.html.erb</p>
+<h4>契約番号一覧</h4>
+
+<table>
+  <thead>
+    <th>契約開始日</th>
+    <th>電話番号</th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= contract.phone_number.telephone_number %></td>
+        <td>
+          <% if contract.is_under_contract == true %>
+            契約中
+          <% else %>
+            解約済
+          <% end %>
+        </td>
+        <td>
+          <% if contract.is_under_contract == true %>
+            <%= link_to '解約する', termination_path %>
+          <% else %>
+            解約日:<%= contract.termination_date.strftime('%Y/%m/%d') %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

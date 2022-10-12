@@ -22,6 +22,10 @@ class Public::ContractsController < ApplicationController
   end
 
   def index
+    @contracts = Contract.where(customer_id: current_customer)
+  end
+  
+  def termination
   end
 
 
