@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     root to: 'phone_numbers#index'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :phone_numbers, only: [:index, :create, :show, :edit, :update]
-
+    resources :contracts, only: [:index]
   end
 
 # 顧客用

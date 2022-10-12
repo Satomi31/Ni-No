@@ -1,0 +1,41 @@
+<h4>契約番号一覧</h4>
+<table>
+  <thead>
+    <th>ID</th>
+    <th>電話番号</th>
+    <th>会社名</th>
+    <th>ステータス</th>
+    <th>契約日 / 解約日</th>
+  </thead>
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.id %></td>
+        <td>
+          <%= link_to admin_phone_number_path(contract.phone_number) do %>
+            <%= contract.phone_number.telephone_number %>
+          <%end %>
+        </td>
+        <td>
+          <%= link_to admin_customer_path(contract.customer) do %>
+            <%= contract.customer.company_name %>
+          <% end %>
+        </td>
+        <td>
+          <% if contract.is_under_contract == true %>
+            契約中
+          <% else %>
+            解約済
+          <% end %>
+        </td>
+        <td>
+          <% if contract.is_under_contract == true %>
+            契約日:<%= contract.created_at.strftime('%Y/%m/%d') %>
+          <% else %>
+            解約日:<%= contract.termination_date.strftime('%Y/%m/%d') %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
