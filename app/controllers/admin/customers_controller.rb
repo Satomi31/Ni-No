@@ -5,6 +5,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @contracts = Contract.where(customer_id: @customer.id)
   end
 
   def edit
