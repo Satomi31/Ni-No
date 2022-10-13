@@ -1,7 +1,7 @@
 class Public::PhoneNumbersController < ApplicationController
 
   def index
-    @phone_numbers = PhoneNumber.where(sale_status: 'no_contract')
+    @phone_numbers = PhoneNumber.where(sale_status: 0)
     @cart_item = CartItem.new
   end
 
