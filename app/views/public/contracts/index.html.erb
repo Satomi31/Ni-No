@@ -21,7 +21,7 @@
         </td>
         <td>
           <% if contract.is_under_contract == true %>
-            <%= link_to '解約する', termination_path %>
+            <%= link_to '解約する', termination_path(id: contract.id) %>
           <% else %>
             解約日:<%= contract.termination_date.strftime('%Y/%m/%d') %>
           <% end %>

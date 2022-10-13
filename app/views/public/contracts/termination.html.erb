@@ -1,1 +1,9 @@
 <h4>本当に番号解約しますか？</h4>
+<p>
+  解約すると、ご契約中の電話番号は<br>
+  ご利用いただけなくなります。<br>
+  解約する場合は、「解約する」をクリックしてください。
+</p>
+
+<%= link_to '解約しない', contracts_path %>
+<%= link_to '解約する', contract_path(@contract), method: :patch %>

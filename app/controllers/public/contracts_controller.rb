@@ -24,8 +24,16 @@ class Public::ContractsController < ApplicationController
   def index
     @contracts = Contract.where(customer_id: current_customer)
   end
-  
+
   def termination
+    @contract = Contract.find(params[:id])
+  end
+
+  def update
+    @contract = Contract.find(params[:id])
+    termination_date = Time.current
+    @contract.update!(is_under_contract: false, termination_date: termination_date)
+    redirect_to contracts_path
   end
 
 
