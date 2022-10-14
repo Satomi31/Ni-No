@@ -1,5 +1,7 @@
 <h4>番号一覧</h4>
 
+<%= render 'public/shared/error_messages', resource: @phone_number %>
+
 <%= form_with model: @phone_number, url: admin_phone_numbers_path do |f| %>
   <div class="field">
     <%= f.label "電話番号" %><br />

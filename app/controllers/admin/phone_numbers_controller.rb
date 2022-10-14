@@ -5,9 +5,13 @@ class Admin::PhoneNumbersController < ApplicationController
   end
 
   def create
-    phone_number = PhoneNumber.new(phone_number_params)
-    phone_number.save
-    redirect_to "/admin/phone_numbers"
+    @phone_number = PhoneNumber.new(phone_number_params)
+    if @phone_number.save
+      redirect_to admin_phone_numbers_path
+    else
+      @phone_numbers = PhoneNumber.all
+      render :index
+    end
   end
 
   def show

@@ -5,3 +5,14 @@ ja:
         no_contract: "未契約"
         under_contract: "契約中"
         number_freeze: "凍結中"
+  activerecord:
+      attributes:
+        customer:
+          last_name: "姓"
+          first_name: "名"
+          email: "メールアドレス"
+          post_code: "郵便番号"
+          address: "住所"
+          phone_number: "電話番号"
+          password: "パスワード"
+          company_name: "会社名"
