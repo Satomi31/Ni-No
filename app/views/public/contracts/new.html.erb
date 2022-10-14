@@ -1,18 +1,23 @@
-<h4>注文情報確認画面</h4>
-<table>
-  <thead>
-    <th>電話番号</th>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= cart_item.phone_number.telephone_number %></td>
-    </tr>
+<div class="container mt-5">
+  <h4>情報確認画面</h4>
+  <div class="row">
+    <table class="table mt-3">
+      <thead>
+        <th>電話番号</th>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.phone_number.telephone_number %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <h5 class="col text-right mb-3">合計: <%= @cart_items.count %>番号</h5>
+  <div class="col text-center">
+    <%= form_with model: @contract do |f| %>
+      <%= f.submit '上記番号を申請する', class: "btn btn-warning" %>
     <% end %>
-  </tbody>
-</table>
-合計:<%= @cart_items.count %>番号
-
-<%= form_with model: @contract do |f| %>
-  <%= f.submit '注文を確定する' %>
-<% end %>
+  </div>
+</div>

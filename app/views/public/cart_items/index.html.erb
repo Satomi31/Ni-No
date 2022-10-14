@@ -1,6 +1,5 @@
 <div class="container mt-5">
-  <h4>注文内容確認</h4>
-
+  <h4>申請番号確認</h4>
   <div class="row">
     <div class="col text-right mb-3">
       <%= link_to 'すべての電話番号を選択解除', destroy_all_path, method: :delete, class: "text-info" %>
@@ -22,9 +21,8 @@
     <div class="col text-left">
       <%= link_to '番号一覧に戻る', phone_numbers_path, class: "text-success" %>
     </div>
-
   </div>
   <div class="col text-center">
-      <%= link_to '注文情報確認に進む', new_contract_path, class: "btn btn-info" %>
+      <%= link_to '情報確認に進む', new_contract_path, class: "btn btn-warning" %>
     </div>
 </div>
