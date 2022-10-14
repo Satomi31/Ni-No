@@ -1,9 +1,16 @@
-<h4>本当に退会しますか？</h4>
-<p>
-  退会すると、ご契約中の電話番号は<br>
-  解約となり、今後ご利用いただくことはできません。<br>
-  退会する場合は、「退会する」をクリックしてください。
-</p>
-
-<%= link_to '退会しない', my_page_path %>
-<%= link_to '退会する', withdraw_path, method: :patch %>
+<div class="container mt-5  text-center">
+  <h4 class="mb-3">本当に退会しますか？</h4>
+  <p>
+    退会すると、ご契約中の電話番号は<br>
+    解約となり、今後ご利用いただくことはできません。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+  <div class="row mt-5">
+    <div class="col">
+      <%= link_to '退会しない', my_page_path, class: "text-info" %>
+    </div>
+    <div class="col">
+      <%= link_to '退会する', withdraw_path, method: :patch, class: "text-danger" %>
+    </div>
+  </div>
+</div>
