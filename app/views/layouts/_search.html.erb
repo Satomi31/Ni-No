@@ -1,0 +1,6 @@
+<div class="input-group">
+  <%= form_with url: search_path, method: :get do |f| %>
+    <%= f.text_field :keyword, value: obj, placeholder: "電話番号を検索", class: "form-control" %>
+    <% f.submit %>
+  <% end %>
+</div>

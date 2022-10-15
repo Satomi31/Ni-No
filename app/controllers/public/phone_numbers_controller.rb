@@ -8,4 +8,11 @@ class Public::PhoneNumbersController < ApplicationController
   def show
 
   end
+
+  def search
+    @phone_numbers = PhoneNumber.search(params[:keyword]).where(sale_status: 0)
+    @word = params[:keyword]
+    @cart_item = CartItem.new
+    render :index
+  end
 end
