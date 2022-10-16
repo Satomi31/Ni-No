@@ -1,40 +1,40 @@
-<h4>番号一覧</h4>
-
-<%= render 'public/shared/error_messages', resource: @phone_number %>
-
-<%= form_with model: @phone_number, url: admin_phone_numbers_path do |f| %>
-  <div class="field">
-    <%= f.label "電話番号" %><br />
-    <%= f.text_field :telephone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label "ステータス" %><br />
-    <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]] %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-
-<table>
-  <thead>
-    <th>ID</th>
-    <th>電話番号</th>
-    <th>ステータス</th>
-  </thead>
-  <tbody>
-    <% @phone_numbers.each do |phone_number| %>
-      <tr>
-        <td><%= phone_number.id %></td>
-        <td>
-          <%= link_to admin_phone_number_path(phone_number) do %>
-            <%= phone_number.telephone_number %>
-          <% end %>
-        </td>
-        <td><%= phone_number.sale_status_i18n %></td>
-      </tr>
+<div class="container mt-5">
+  <h4 class="mb-3">番号一覧</h4>
+    <%= render 'public/shared/error_messages', resource: @phone_number %>
+    <%= form_with model: @phone_number, url: admin_phone_numbers_path do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.label "電話番号" %>
+        <%= f.text_field :telephone_number, class: "form-control" %>
+      </div>
+      <div class="col">
+        <%= f.label "ステータス" %>
+        <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]], {}, class: "form-control" %>
+      </div>
+      <div class="col d-flex align-items-end">
+        <%= f.submit "新規登録", class: "btn btn-warning" %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+
+    <table class="table table-hover mt-5">
+      <thead>
+        <th>ID</th>
+        <th>電話番号</th>
+        <th>ステータス</th>
+      </thead>
+      <tbody>
+        <% @phone_numbers.each do |phone_number| %>
+          <tr>
+            <td><%= phone_number.id %></td>
+            <td>
+              <%= link_to admin_phone_number_path(phone_number) do %>
+                <%= phone_number.telephone_number %>
+              <% end %>
+            </td>
+            <td><%= phone_number.sale_status_i18n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
