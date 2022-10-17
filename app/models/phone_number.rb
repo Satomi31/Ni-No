@@ -6,4 +6,8 @@ class PhoneNumber < ApplicationRecord
   validates :sale_status, presence: true
 
   enum sale_status: { no_contract: 0, under_contract: 1, number_freeze: 2}
+
+  def self.search(keyword)
+    where(["telephone_number like?", "%#{keyword}%"])
+  end
 end

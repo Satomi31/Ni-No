@@ -24,20 +24,20 @@
                   <%= link_to "番号一覧", admin_phone_numbers_path, class: 'nav-link text-success' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "会員一覧", admin_customers_path, class: 'nav-link nav-link text-success' %>
+                  <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-success' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "契約一覧", admin_contracts_path, class: 'nav-link nav-link text-success' %>
+                  <%= link_to "契約一覧", admin_contracts_path, class: 'nav-link text-success' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link nav-link text-success' %>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-success' %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link mr-3 btn btn-outline-warning' %>
+                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-warning' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-link btn btn-outline-warning' %>
+                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-warning' %>
                 </li>
               <% end %>
             </ul>
