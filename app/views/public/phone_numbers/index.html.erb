@@ -1,4 +1,6 @@
 <h4>番号一覧</h4>
+<% if @word %><p>"<%= @word %>" の検索結果</p><% end %>
+
 <%= render 'layouts/search', obj: @keyword %>
 <table>
   <thead>
@@ -8,15 +10,26 @@
   </thead>
   <tbody>
     <% @phone_numbers.each do |phone_number| %>
+    <% temp = 0 %>
       <tr>
         <td><%= phone_number.telephone_number %></td>
-        <td>
-          <%= form_with model: @cart_item do |f| %>
-            <%= f.hidden_field :customer_id, value: current_customer.id %>
-            <%= f.hidden_field :phone_number_id, value: phone_number.id %>
-            <%= f.submit "カートに入れる" %>
+        <% @cart_items.each do |cart_item| %>
+          <% if phone_number.id == cart_item.phone_number_id %>
+           <% temp = 1 %>
+          <% break %>
           <% end %>
-        </td>
+        <% end %>
+        <% if temp == 1 %>
+          <td>カートに入っています</td>
+        <% elsif temp == 0 %>
+          <td>
+            <%= form_with model: @cart_item do |f| %>
+              <%= f.hidden_field :customer_id, value: current_customer.id %>
+              <%= f.hidden_field :phone_number_id, value: phone_number.id %>
+              <%= f.submit "カートに入れる" %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
