@@ -3,6 +3,11 @@ class Admin::PhoneNumbersController < ApplicationController
     @phone_number = PhoneNumber.new
     @phone_numbers = PhoneNumber.all
   end
+  
+  def import
+    PhoneNumber.import(params[:file])
+    redirect_to admin_phone_numbers_path
+  end
 
   def create
     @phone_number = PhoneNumber.new(phone_number_params)

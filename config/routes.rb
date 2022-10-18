@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   }
 
 # 管理者用
+  post 'phone_numbers/import' => 'admin/phone_numbers#import', as: 'import'
   namespace :admin do
     root to: 'phone_numbers#index'
     resources :customers, only: [:index, :show, :edit, :update]
