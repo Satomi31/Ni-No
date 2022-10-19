@@ -18,7 +18,11 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find_by(id: current_customer.id)
+    contracts = Contract.where(customer_id: current_customer.id)
     @customer.update!(is_deleted: true)
+    contracts.each do |contract|
+      contract.update!(is_under_contract: false)
+    end
     redirect_to root_path
   end
 
