@@ -15,6 +15,5 @@ class Customer < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :password, presence: true, on: :create
-  # validates :is_deleted, presence: true
 
 end

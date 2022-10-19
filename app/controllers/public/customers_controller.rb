@@ -21,7 +21,10 @@ class Public::CustomersController < ApplicationController
     contracts = Contract.where(customer_id: current_customer.id)
     @customer.update!(is_deleted: true)
     contracts.each do |contract|
-      contract.update!(is_under_contract: false)
+      phone_number_id = contract.phone_number_id
+      phone_number = PhoneNumber.find_by(id: phone_number_id)
+      contract.update(is_under_contract: false, termination_date: Time.current)
+      phone_number.update!(sale_status: 2)
     end
     redirect_to root_path
   end
