@@ -24,7 +24,7 @@ class Public::ContractsController < ApplicationController
   end
 
   def index
-    @contracts = Contract.where(customer_id: current_customer)
+    @contracts = Contract.where(customer_id: current_customer).page(params[:page])
   end
 
   def termination
