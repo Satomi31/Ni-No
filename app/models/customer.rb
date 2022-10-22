@@ -17,11 +17,9 @@ class Customer < ApplicationRecord
   validates :password, presence: true, on: :create
 
   def self.guest
-    find_or_create_by!(
-      company_name: 'guestuser' , post_code: '0000000', address: 'guest', telephone_number: '0000000000', last_name: 'guest', first_name: 'guest', email: 'guest@example.com'
-    ) do |customer|
-        customer.password = SecureRandom.urlsafe_base64
-        # customer.name = "guestuser"
+    find_or_create_by!(company_name: 'guestuser' , post_code: '0000000', address: 'guest', telephone_number: '0000000000', last_name: 'guest', first_name: 'guest', email: 'guest@example.com') do |customer|
+      customer.password = SecureRandom.urlsafe_base64
+      customer.email = "guest@example.com"
     end
   end
 

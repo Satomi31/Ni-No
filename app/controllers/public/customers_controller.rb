@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  before_action :ensure_guest_user, only: [:edit]
+
   def show
     @customer = Customer.find_by(id: current_customer)
   end
@@ -33,5 +35,12 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:company_name, :email, :post_code, :address, :telephone_number, :last_name, :first_name)
+  end
+# ゲストログインでユーザー編集画面へのURLが入力された場合、マイページへリダイレクト
+  def ensure_guest_user
+    @customer = Customer.find_by(id: current_customer.id)
+    if @customer.company_name == "guestuser"
+      redirect_to my_page_path
+    end
   end
 end

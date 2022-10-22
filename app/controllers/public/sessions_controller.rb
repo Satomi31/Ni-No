@@ -11,11 +11,12 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  # def guest_sign_in
-  #   customer = Customer.guest
-  #   sign_in customer
-  #   redirect_to root_path, notice: 'guestuserでログインしました。'
-  # end
+  def guest_sign_in
+
+    customer = Customer.guest
+    sign_in customer
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
 
   protected
   # 退会しているかを判断するメソッド
