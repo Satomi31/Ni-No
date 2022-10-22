@@ -1,6 +1,6 @@
 class Admin::ContractsController < ApplicationController
 
   def index
-    @contracts = Contract.all
+    @contracts = Contract.page(params[:page])
   end
 end

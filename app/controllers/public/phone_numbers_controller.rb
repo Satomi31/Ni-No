@@ -1,7 +1,7 @@
 class Public::PhoneNumbersController < ApplicationController
 
   def index
-    @phone_numbers = PhoneNumber.where(sale_status: 0)
+    @phone_numbers = PhoneNumber.where(sale_status: 0).page(params[:page])
     cart = current_customer.cart_items
     @cart_items = cart.all
     @cart_item = CartItem.new
@@ -12,7 +12,7 @@ class Public::PhoneNumbersController < ApplicationController
   end
 
   def search
-    @phone_numbers = PhoneNumber.search(params[:keyword]).where(sale_status: 0)
+    @phone_numbers = PhoneNumber.search(params[:keyword]).where(sale_status: 0).page(params[:page])
     @word = params[:keyword]
     @cart_item = CartItem.new
     cart = current_customer.cart_items

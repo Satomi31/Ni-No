@@ -1,7 +1,7 @@
 class Admin::PhoneNumbersController < ApplicationController
   def index
     @phone_number = PhoneNumber.new
-    @phone_numbers = PhoneNumber.all
+    @phone_numbers = PhoneNumber.page(params[:page])
   end
 
   def import
@@ -14,14 +14,14 @@ class Admin::PhoneNumbersController < ApplicationController
     if @phone_number.save
       redirect_to admin_phone_numbers_path
     else
-      @phone_numbers = PhoneNumber.all
+      @phone_numbers = PhoneNumber.page(params[:page])
       render :index
     end
   end
 
   def show
     @phone_number = PhoneNumber.find(params[:id])
-    @contracts = Contract.where(phone_number_id: @phone_number.id)
+    @contracts = Contract.where(phone_number_id: @phone_number.id).page(params[:page])
   end
 
   def edit
