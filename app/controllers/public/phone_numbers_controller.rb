@@ -19,4 +19,11 @@ class Public::PhoneNumbersController < ApplicationController
     @cart_items = cart.all
     render :index
   end
+
+  def ryoban
+    @phone_numbers = PhoneNumber.good_number_search().page(params[:page])
+    @cart_item = CartItem.new
+    cart = current_customer.cart_items
+    @cart_items = cart.all
+  end
 end

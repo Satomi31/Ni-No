@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <h4 class="mb-3">良番一覧</h4>
+  <div class="row">
+    <table class="table mt-3 text-center">
+          <thead>
+            <tr>
+              <th>電話番号</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @phone_numbers.each do |phone_number| %>
+            <% temp = 0 %>
+              <tr>
+                <td><%= phone_number.telephone_number %></td>
+                <% @cart_items.each do |cart_item| %>
+                  <% if phone_number.id == cart_item.phone_number_id %>
+                   <% temp = 1 %>
+                  <% break %>
+                  <% end %>
+                <% end %>
+                <% if temp == 1 %>
+                  <td>カートに追加済み</td>
+                <% elsif temp == 0 %>
+                  <td>
+                    <%= form_with model: @cart_item do |f| %>
+                      <%= f.hidden_field :customer_id, value: current_customer.id %>
+                      <%= f.hidden_field :phone_number_id, value: phone_number.id %>
+                      <%= f.submit "カートに入れる", class: "btn btn-info" %>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <%= paginate @phone_numbers %>
+  </div>

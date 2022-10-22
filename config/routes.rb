@@ -45,7 +45,8 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
 
-  get 'search' => 'public/phone_numbers#search'
+  get 'customers/search' => 'public/phone_numbers#search'
+  get 'customers/ryoban' => 'public/phone_numbers#ryoban'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
