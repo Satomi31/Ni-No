@@ -1,51 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-primary mb-3">
-
-          <% if customer_signed_in? %>
-            <%= current_customer.company_name %>様
-          <% end %>
-
-          <div class="collapse navbar-collapse top_logo">
-            <ul class="navbar-nav ml-auto">
-              <% if customer_signed_in? %>
-                <li class="nav-item align-top">
-                  <%= link_to 'マイページ', my_page_path, class: 'nav-link text-secondary' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to '番号一覧', phone_numbers_path, class: 'nav-link text-secondary' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to '良番一覧', customers_ryoban_path, class: 'nav-link text-secondary' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'カート', cart_items_path, class: 'nav-link text-secondary' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-secondary' %>
-                </li>
-              <% elsif admin_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "番号一覧", admin_phone_numbers_path, class: 'nav-link text-success' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-success' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "契約一覧", admin_contracts_path, class: 'nav-link text-success' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-success' %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'nav-link text-warning', method: :post %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-warning' %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-warning' %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-primary bg-light">
+  <div class="mx-5">
+    <%= link_to root_path do %>
+      <%= image_tag "/assets/Ni-NoLogo.png", size: "200x100" %>
+    <% end %>
+  </div>
+  <% if customer_signed_in? %>
+    <div class="ml-5"><%= current_customer.company_name %>様</div>
+  <% end %>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <% if customer_signed_in? %>
+        <li class="nav-item align-top">
+          <%= link_to 'マイページ', my_page_path, class: 'nav-link text-secondary' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '番号一覧', phone_numbers_path, class: 'nav-link text-secondary' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '良番一覧', customers_ryoban_path, class: 'nav-link text-secondary' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'カート', cart_items_path, class: 'nav-link text-secondary' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-secondary' %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "番号一覧", admin_phone_numbers_path, class: 'nav-link text-success' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-success' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "契約一覧", admin_contracts_path, class: 'nav-link text-success' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-success' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'nav-link text-warning', method: :post %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-warning' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-warning' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
