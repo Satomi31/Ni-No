@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-primary bg-light">
   <div class="mx-5">
-    <%= link_to root_path do %>
+    <%= link_to (admin_signed_in? ? admin_root_path : root_path ) do %>
       <%= image_tag "/assets/Ni-NoLogo.png", size: "200x100" %>
     <% end %>
   </div>

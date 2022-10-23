@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'contracts/termination' => 'public/contracts#termination', as: 'termination'
   delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
   scope module: :public do
+    root to: 'homes#top'
     resources :contracts, only: [:new, :create, :index, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :phone_numbers, only: [:index, :show]
@@ -42,8 +43,6 @@ Rails.application.routes.draw do
   #退会機能
   get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
-
-  root to: 'public/homes#top'
 
   get 'customers/search' => 'public/phone_numbers#search'
   get 'customers/ryoban' => 'public/phone_numbers#ryoban'
