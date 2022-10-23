@@ -4,7 +4,10 @@
     <p>このサイトでは、国内電話番号（東京23区: 03番号）のご契約を承っております</p><br>
     <p>※ポートフォリオ用デモサイトです</p>
     <% if customer_signed_in? %>
-      <div class="row d-flex align-items-end" style="height:220px;">
+      <div class="row d-flex align-items-end" style="height:200px;">
+        <h5 class="col-6 text-center">番号のお申し込みはこちらから!</h5>
+      </div>
+      <div class="row mt-3">
         <div class="col-3">
           <%= link_to '番号一覧', phone_numbers_path, class: 'btn btn-success btn-block' %>
         </div>
@@ -20,15 +23,15 @@
     <% else %>
       <div class="row d-flex align-items-end" style="height:220px;">
         <div class="col-3">
-          <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-success btn-block' %>
+          <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-success btn-block rounded-pill' %>
         </div>
         <div class="col-3">
-          <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-info btn-block' %>
+          <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-info btn-block rounded-pill' %>
         </div>
       </div>
         <div class="row mt-3">
           <div class="col-6 text-center">
-            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'btn btn-outline-primary btn-block', method: :post %>
+            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'btn btn-outline-primary btn-block rounded-pill', method: :post %>
           </div>
         </div>
     <% end %>
