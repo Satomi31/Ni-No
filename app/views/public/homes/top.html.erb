@@ -3,5 +3,34 @@
     <h4>ようこそ、Ni-Noへ</h4>
     <p>このサイトでは、国内電話番号（東京23区: 03番号）のご契約を承っております</p><br>
     <p>※ポートフォリオ用デモサイトです</p>
+    <% if customer_signed_in? %>
+      <div class="row d-flex align-items-end" style="height:220px;">
+        <div class="col-3">
+          <%= link_to '番号一覧', phone_numbers_path, class: 'btn btn-success btn-block' %>
+        </div>
+        <div class="col-3">
+          <%= link_to '良番一覧', customers_ryoban_path, class: 'btn btn-info btn-block' %>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6 text-center">
+          <%= link_to 'マイページ', my_page_path, class: 'btn btn-outline-primary btn-block' %>
+        </div>
+      </div>
+    <% else %>
+      <div class="row d-flex align-items-end" style="height:220px;">
+        <div class="col-3">
+          <%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-success btn-block' %>
+        </div>
+        <div class="col-3">
+          <%= link_to "ログイン", new_customer_session_path, class: 'btn btn-info btn-block' %>
+        </div>
+      </div>
+        <div class="row mt-3">
+          <div class="col-6 text-center">
+            <%= link_to 'ゲストログイン（閲覧用）', customers_guest_sign_in_path, class: 'btn btn-outline-primary btn-block', method: :post %>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
