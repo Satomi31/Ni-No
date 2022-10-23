@@ -1,19 +1,25 @@
-<h4>番号詳細編集</h4>
-<%= form_with model:@phone_number, url: admin_phone_number_path(@phone_number) do |f| %>
-  <table>
-    <tbody>
-      <tr>
-        <td>電話番号</td>
-        <td><%= @phone_number.telephone_number %></td>
-      </tr>
-      <tr>
-        <td>販売ステータス</td>
-        <td>
-          <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]] %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <%= f.hidden_field :telephone_number, value: @phone_number.telephone_number %>
-  <%= f.submit '変更を保存' %>
-<% end %>
+<div class="container mt-5">
+  <h4 class="mb-3">番号詳細編集</h4>
+  <%= form_with model:@phone_number, url: admin_phone_number_path(@phone_number) do |f| %>
+    <div class="row">
+      <table class="table table-borderless mt-3">
+        <tbody>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @phone_number.telephone_number %></td>
+          </tr>
+          <tr class="form-group">
+            <td>販売ステータス</td>
+            <td class="col-5">
+              <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]], {}, class: "form-control" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="col text-center mt-5">
+        <%= f.hidden_field :telephone_number, value: @phone_number.telephone_number %>
+        <%= f.submit '変更を保存', class: "btn btn-warning" %>
+      </div>
+    </div>
+  <% end %>
+</div>
