@@ -1,7 +1,8 @@
 class Admin::PhoneNumbersController < ApplicationController
   def index
     @phone_number = PhoneNumber.new
-    @phone_numbers = PhoneNumber.page(params[:page])
+    # 作成日時の降順で表示
+    @phone_numbers = PhoneNumber.order("created_at DESC").page(params[:page])
   end
 
   def import
