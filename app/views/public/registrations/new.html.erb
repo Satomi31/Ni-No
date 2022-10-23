@@ -15,7 +15,7 @@
         </div>
 
         <div class="field mb-2">
-          <%= f.label "郵便番号(ハイフンなし)" %><br />
+          <%= f.label "郵便番号" %><br />
           <%= f.text_field :post_code, placeholder: "0000000", class: "form-control" %>
         </div>
 
@@ -25,18 +25,18 @@
         </div>
 
         <div class="field mb-2">
-          <%= f.label "電話番号(ハイフンなし)" %><br />
-          <%= f.text_field :telephone_number, placeholder: "03xxxxxxxx", class: "form-control" %>
+          <%= f.label "電話番号" %><br />
+          <%= f.text_field :telephone_number, placeholder: "03-xxxx-xxxx", class: "form-control" %>
         </div>
 
         <div class="field mb-2">
           <%= f.label "ご担当者様名" %><br />
           <div class="row">
             <div class="col">
-              <%= f.text_field :last_name, placeholder: "令和", class: "form-control" %>
+              <%= f.text_field :last_name, placeholder: "(姓) 令和", class: "form-control" %>
             </div>
             <div class="col">
-              <%= f.text_field :first_name, placeholder: "道子", class: "form-control" %>
+              <%= f.text_field :first_name, placeholder: "(名) 道子", class: "form-control" %>
             </div>
           </div>
         </div>

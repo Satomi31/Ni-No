@@ -6,6 +6,20 @@ ja:
         under_contract: "契約中"
         number_freeze: "凍結中"
   activerecord:
+    attributes:
+      customer:
+        company_name: 会社名
+        email: メールアドレス
+        password: パスワード
+        post_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        last_name: 担当者氏名(姓)
+        first_name: 担当者氏名(名)
+        is_deleted: 退会フラグ
+      phone_number:
+        telephone_number: 電話番号
+        sale_status: 販売ステータス
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

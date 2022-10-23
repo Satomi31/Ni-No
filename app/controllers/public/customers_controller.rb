@@ -10,9 +10,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find_by(id: current_customer)
-    customer.update(customer_params)
-    redirect_to my_page_path
+    @customer = Customer.find_by(id: current_customer)
+    if @customer.update(customer_params)
+      redirect_to my_page_path
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
@@ -36,8 +39,8 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:company_name, :email, :post_code, :address, :telephone_number, :last_name, :first_name)
   end
-# ゲストログインでユーザー編集画面へのURLが入力された場合、マイページへリダイレクト
   def ensure_guest_user
+    # ゲストログインでユーザー編集画面へのURLが入力された場合、マイページへリダイレクト
     @customer = Customer.find_by(id: current_customer.id)
     if @customer.company_name == "guestuser"
       redirect_to my_page_path
