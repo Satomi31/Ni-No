@@ -1,6 +1,5 @@
 <div class="container mt-5">
   <h4 class="mb-3">番号一覧</h4>
-    <%= render 'public/shared/error_messages', resource: @phone_number %>
     <%= form_with model: @phone_number, url: admin_phone_numbers_path do |f| %>
     <div class="row border rounded p-3">
       <div class="col">

@@ -5,8 +5,12 @@ class Admin::PhoneNumbersController < ApplicationController
   end
 
   def import
-    PhoneNumber.import(params[:file])
-    redirect_to admin_phone_numbers_path
+    if params[:file].present?
+      PhoneNumber.import(params[:file])
+      redirect_to admin_phone_numbers_path
+    else
+      redirect_to admin_phone_numbers_path
+    end
   end
 
   def create
