@@ -1,5 +1,5 @@
 class Admin::PhoneNumbersController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_admin!
 
   def index
     @phone_number = PhoneNumber.new
