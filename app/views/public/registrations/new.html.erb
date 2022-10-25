@@ -6,12 +6,12 @@
         <%= render "public/shared/error_messages", resource: resource %>
         <div class="field mb-2">
           <%= f.label "会社名" %><br />
-          <%= f.text_field :company_name, placeholder: "◯◯株式会社", class: "form-control" %>
+          <%= f.text_field :company_name, placeholder: "◯◯株式会社", autofocus: true, class: "form-control" %>
         </div>
 
         <div class="field mb-2">
           <%= f.label "メールアドレス" %><br />
-          <%= f.email_field :email, placeholder: "mail@example.com", autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, placeholder: "mail@example.com", autocomplete: "email", class: "form-control" %>
         </div>
 
         <div class="field mb-2">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="field mb-2">
-          <%= f.label "ご担当者様名" %><br />
+          <%= f.label "担当者名" %><br />
           <div class="row">
             <div class="col">
               <%= f.text_field :last_name, placeholder: "(姓) 令和", class: "form-control" %>

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :contracts, only: [:new, :create, :index, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]
-    resources :phone_numbers, only: [:index, :show]
+    resources :phone_numbers, only: [:index]
   end
   get 'customers/my_page' => 'public/customers#show', as: 'my_page'
   get 'customers/information/edit' => 'public/customers#edit', as: 'edit_information'

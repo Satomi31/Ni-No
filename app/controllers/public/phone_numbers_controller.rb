@@ -1,14 +1,11 @@
 class Public::PhoneNumbersController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
     @phone_numbers = PhoneNumber.where(sale_status: 0).page(params[:page])
     cart = current_customer.cart_items
     @cart_items = cart.all
     @cart_item = CartItem.new
-  end
-
-  def show
-
   end
 
   def search

@@ -2,7 +2,7 @@
   <h4>申請番号確認</h4>
   <div class="row">
     <div class="col text-right mb-3">
-      <%= link_to 'すべての電話番号を選択解除', destroy_all_path, method: :delete, class: "text-info" %>
+      <%= link_to 'すべての電話番号をカートから削除', destroy_all_path, method: :delete, class: "text-info" %>
     </div>
     <table class="table table-hover">
       <thead>
@@ -23,6 +23,10 @@
     </div>
   </div>
   <div class="col text-center">
+    <% if @cart_items.present? %>
       <%= link_to '情報確認に進む', new_contract_path, class: "btn btn-warning" %>
+    <% else %>
+      カートは空です
+    <% end %>
     </div>
 </div>

@@ -1,4 +1,6 @@
 class Public::ContractsController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     cart = current_customer.cart_items
     @cart_items = cart.all

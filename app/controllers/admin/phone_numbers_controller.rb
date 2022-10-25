@@ -1,4 +1,6 @@
 class Admin::PhoneNumbersController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @phone_number = PhoneNumber.new
     # 作成日時の降順で表示

@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   before_action :ensure_guest_user, only: [:edit]
 
   def show
@@ -31,6 +32,7 @@ class Public::CustomersController < ApplicationController
       contract.update(is_under_contract: false, termination_date: Time.current)
       phone_number.update!(sale_status: 2)
     end
+    reset_session
     redirect_to root_path
   end
 
