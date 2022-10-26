@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   devise_scope :customer do
-    post 'customers/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
   # 管理者用
@@ -19,33 +19,33 @@ Rails.application.routes.draw do
   }
 
 # 管理者用
-  post 'phone_numbers/import' => 'admin/phone_numbers#import', as: 'import'
+  post "phone_numbers/import" => "admin/phone_numbers#import", as: "import"
   namespace :admin do
-    root to: 'phone_numbers#index'
+    root to: "phone_numbers#index"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :phone_numbers, only: [:index, :create, :show, :edit, :update]
     resources :contracts, only: [:index]
   end
 
 # 顧客用
-  get 'contracts/complete' => 'public/contracts#complete', as: 'complete'
-  get 'contracts/termination' => 'public/contracts#termination', as: 'termination'
-  delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all', as: 'destroy_all'
+  get "contracts/complete" => "public/contracts#complete", as: "complete"
+  get "contracts/termination" => "public/contracts#termination", as: "termination"
+  delete "cart_items/destroy_all" => "public/cart_items#destroy_all", as: "destroy_all"
   scope module: :public do
-    root to: 'homes#top'
+    root to: "homes#top"
     resources :contracts, only: [:new, :create, :index, :update]
     resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :phone_numbers, only: [:index]
   end
-  get 'customers/my_page' => 'public/customers#show', as: 'my_page'
-  get 'customers/information/edit' => 'public/customers#edit', as: 'edit_information'
-  patch 'customers/information' => 'public/customers#update', as: 'information'
+  get "customers/my_page" => "public/customers#show", as: "my_page"
+  get "customers/information/edit" => "public/customers#edit", as: "edit_information"
+  patch "customers/information" => "public/customers#update", as: "information"
   #退会機能
-  get 'customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
-  patch 'customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
+  get "customers/unsubscribe" => "public/customers#unsubscribe", as: "unsubscribe"
+  patch "customers/withdraw" => "public/customers#withdraw", as: "withdraw"
 
-  get 'customers/search' => 'public/phone_numbers#search'
-  get 'customers/ryoban' => 'public/phone_numbers#ryoban'
+  get "customers/search" => "public/phone_numbers#search"
+  get "customers/ryoban" => "public/phone_numbers#ryoban"
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -2,7 +2,7 @@
   <h4>申請番号確認</h4>
   <div class="row">
     <div class="col text-right mb-3">
-      <%= link_to 'すべての電話番号をカートから削除', destroy_all_path, method: :delete, class: "text-info" %>
+      <%= link_to "すべての電話番号をカートから削除", destroy_all_path, method: :delete, class: "text-info" %>
     </div>
     <table class="table table-hover">
       <thead>
@@ -13,18 +13,18 @@
         <% @cart_items.each do |cart_item| %>
         <tr>
           <td><%= cart_item.phone_number.telephone_number %></td>
-          <td><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "text-info" %></td>
+          <td><%= link_to "削除", cart_item_path(cart_item), method: :delete, class: "text-info" %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
     <div class="col text-left">
-      <%= link_to '番号一覧に戻る', phone_numbers_path, class: "text-success" %>
+      <%= link_to "番号一覧に戻る", phone_numbers_path, class: "text-success" %>
     </div>
   </div>
   <div class="col text-center">
     <% if @cart_items.present? %>
-      <%= link_to '情報確認に進む', new_contract_path, class: "btn btn-warning" %>
+      <%= link_to "情報確認に進む", new_contract_path, class: "btn btn-warning" %>
     <% else %>
       カートは空です
     <% end %>

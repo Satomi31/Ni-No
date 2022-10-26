@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <h4><%= @customer.company_name %>の会員情報編集</h4>
-  <%= render 'public/shared/error_messages', resource: @customer %>
+  <%= render "public/shared/error_messages", resource: @customer %>
   <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
     <table class="table table-borderless mt-3">
       <tr class="form-group">
@@ -36,9 +36,9 @@
         <td><%= f.label "会員ステータス" %></td>
         <td>
           <%= f.radio_button :is_deleted, false %>
-          <%= f.label :is_deleted, '有効', value: false %>
+          <%= f.label :is_deleted, "有効", value: false %>
           <%= f.radio_button :is_deleted, true, class: "ml-3" %>
-          <%= f.label :is_deleted, '退会', value: true %>
+          <%= f.label :is_deleted, "退会", value: true %>
         </td>
       </tr>
     </table>

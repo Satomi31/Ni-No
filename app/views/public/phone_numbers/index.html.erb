@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h4 class="mb-3">番号一覧</h4>
   <% if @word %><p>"<%= @word %>" の検索結果</p><% end %>
-  <%= render 'layouts/search', obj: @keyword %>
+  <%= render "layouts/search", obj: @keyword %>
   <div class="row">
     <table class="table mt-3 text-center">
       <thead>

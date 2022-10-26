@@ -11,7 +11,7 @@
     <tbody>
       <% @contracts.each do |contract| %>
         <tr>
-          <td><%= contract.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= contract.created_at.strftime("%Y/%m/%d") %></td>
           <td><%= contract.phone_number.telephone_number %></td>
           <td>
             <% if contract.is_under_contract == true %>
@@ -22,9 +22,9 @@
           </td>
           <td>
             <% if contract.is_under_contract == true %>
-              <%= link_to '解約する', termination_path(id: contract.id), class: "text-danger" %>
+              <%= link_to "解約する", termination_path(id: contract.id), class: "text-danger" %>
             <% else %>
-              解約日:<%= contract.termination_date.strftime('%Y/%m/%d') %>
+              解約日:<%= contract.termination_date.strftime("%Y/%m/%d") %>
             <% end %>
           </td>
         </tr>

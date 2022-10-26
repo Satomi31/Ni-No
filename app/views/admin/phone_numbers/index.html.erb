@@ -8,7 +8,7 @@
       </div>
       <div class="col form-group">
         <%= f.label "ステータス" %>
-        <%= f.select :sale_status, [['未契約', :no_contract], ['契約中', :under_contract], ['凍結中', :number_freeze]], {}, class: "form-control" %>
+        <%= f.select :sale_status, [["未契約", :no_contract], ["契約中", :under_contract], ["凍結中", :number_freeze]], {}, class: "form-control" %>
       </div>
       <div class="col d-flex align-items-end form-group">
         <%= f.submit "新規登録", class: "btn btn-warning" %>
