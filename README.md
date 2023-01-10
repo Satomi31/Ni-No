@@ -1,3 +1,5 @@
+<img width="1440" alt="スクリーンショット 2022-10-24 2 13 13" src="https://user-images.githubusercontent.com/108987382/211506916-f4ff4574-b462-4d59-8bce-cc4d167a4132.png">
+
 # 電話番号契約サイト
 
 ## サイト概要
